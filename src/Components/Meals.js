@@ -3,7 +3,15 @@ import { BsHandThumbsUp as Like } from 'react-icons/bs'
 import { useGlobalContext } from '../context'
 
 const Meals = () => {
-  const {loading, meals} = useGlobalContext()
+  const {loading, meals, setShowModal, setModalInfo} = useGlobalContext()
+
+  const toggleModal =(id) => {
+    setShowModal(true)
+    let foundMeal = meals.find((meal) => meal.idMeal === id)
+    setModalInfo(foundMeal)
+  }
+
+
 
   if (loading) {
     return (
@@ -26,11 +34,14 @@ const Meals = () => {
           return (
             <article
               key={id}
-              className="single-meal">
+              id={id}
+              className="single-meal"
+              >
                 <img
                   src={image}
                   alt={name}
                   className='img'
+                  onClick={()=> toggleModal(id)}
                 />
                 <footer>
                   <h5>{name}</h5>

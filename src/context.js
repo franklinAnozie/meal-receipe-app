@@ -10,6 +10,7 @@ export const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(false)
     const [meals, setMeals] = useState([])
     const [showModal, setShowModal] = useState(false)
+    const [modalInfo, setModalInfo] = useState(null);
 
     const fetchMeals = async (url) => {
         setLoading(true)
@@ -29,7 +30,7 @@ export const AppProvider = ({children}) => {
         fetchMeals(`${allMealsURL}`)
     }, [])
     return (
-        <context.Provider value={{loading, meals, allMealsURL, randomMealURL, fetchMeals, showModal}}>
+        <context.Provider value={{loading, meals, allMealsURL, randomMealURL, fetchMeals, showModal, setShowModal, setModalInfo, modalInfo}}>
             {children}
         </context.Provider>
     )
