@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context'
 
 const Modal = () => {
   const { setShowModal, modalInfo } = useGlobalContext()
-  const {strMealThumb: image, strMeal: title, strInstructions: text, strString: source} = modalInfo
+  const {strMealThumb: image, strMeal: title, strInstructions: text, strSource: source} = modalInfo
   return (
     <aside className='modal-overlay'>
       <div className='modal-container'>

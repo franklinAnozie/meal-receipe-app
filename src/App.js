@@ -7,13 +7,13 @@ import Search from './Components/Search';
 import './App.css';
 
 function App() {
-  const { showModal } = useGlobalContext()
+  const { showModal, favoriteMeals } = useGlobalContext()
   return (
     <div>
       <header>
         <Search />
+        {favoriteMeals.length > 0 && <Favorite favoriteMeal={favoriteMeals} />}
         <Meals />
-        <Favorite />
         {showModal && <Modal />}
       </header>
     </div>

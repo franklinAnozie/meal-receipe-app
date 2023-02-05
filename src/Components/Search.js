@@ -16,7 +16,7 @@ const Search = () => {
     } 
   }
 
-  const generateRandom = (e) => {
+  const generateRandom = () => {
     (fetchMeals(randomMealURL))
   }
 

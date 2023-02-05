@@ -1,17 +1,9 @@
 import React from 'react'
-import { BsHandThumbsUp as Like } from 'react-icons/bs'
+import { BsHandThumbsUp as Like, BsHandThumbsDown as Dislike } from 'react-icons/bs'
 import { useGlobalContext } from '../context'
 
 const Meals = () => {
-  const {loading, meals, setShowModal, setModalInfo} = useGlobalContext()
-
-  const toggleModal =(id) => {
-    setShowModal(true)
-    let foundMeal = meals.find((meal) => meal.idMeal === id)
-    setModalInfo(foundMeal)
-  }
-
-
+  const {loading, meals, setAsFav, removeFav, toggleModal} = useGlobalContext()
 
   if (loading) {
     return (
@@ -45,7 +37,8 @@ const Meals = () => {
                 />
                 <footer>
                   <h5>{name}</h5>
-                  <button className='like-btn'><Like /></button>
+                  <button className='like-btn' onClick={()=>setAsFav(id)}><Like /></button>
+                  <button className='like-btn' onClick={()=>removeFav(id)}><Dislike /></button>
                 </footer>
             </article> 
           )
